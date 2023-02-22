@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.code;
+using api.data.implementations;
+using api.data.interfaces;
+using dataswitch.data.interfaces;
 using dataswitch.Model;
+using dataswitch.Model.maria_models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,9 +33,14 @@ namespace dataswitch
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            var _connectionString = Configuration.GetConnectionString("SQLConnection");
+            services.AddDbContext<MariaContext>(options => options.UseMySql( _connectionString,ServerVersion.AutoDetect(_connectionString))); 
             services.AddDbContext<ecsur_kfafhContext>(x => x.UseSqlServer(Configuration.GetConnectionString("kfafhDatabase")));
             services.AddAutoMapper(System.Reflection.Assembly.GetExecutingAssembly());
             services.AddControllers();
+            services.AddScoped<IMariaDBStuff, MariaDB>();
+            services.AddScoped<IPatient, Patient>();
             services.AddTransient<specialMaps>(); 
             services.AddSwaggerGen(c =>
             {

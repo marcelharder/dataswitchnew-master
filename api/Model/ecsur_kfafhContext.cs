@@ -1,4 +1,5 @@
 ﻿using System;
+using api.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -6,12 +7,8 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace dataswitch.Model
 {
-    public partial class ecsur_kfafhContext : DbContext
+    public partial class ecsur_kfafhContext : BaseContext
     {
-        public ecsur_kfafhContext()
-        {
-        }
-
         public ecsur_kfafhContext(DbContextOptions<ecsur_kfafhContext> options)
             : base(options)
         {
