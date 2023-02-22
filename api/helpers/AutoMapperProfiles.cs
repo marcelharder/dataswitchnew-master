@@ -1,6 +1,7 @@
 using api.DTOs;
-
+using api.Model.maria_models;
 using AutoMapper;
+using dataswitch.DTOs;
 
 namespace api.Helpers
 {
@@ -8,9 +9,9 @@ namespace api.Helpers
     {
         public AutoMapperProfiles()
         {
-            /* CreateMap<Class_Patient, PatientDTO>();
+             CreateMap<Class_Patient, FullPatientDTO>();
             
-            CreateMap<PatientDTO, Class_Patient>()
+            CreateMap<FullPatientDTO, Class_Patient>()
             .ForMember(dest => dest.PatientId, opt => opt.Ignore())
             .ForMember(dest => dest.extra_cardiac_arteriopathy, opt => opt.NullSubstitute("0"))
             .ForMember(dest => dest.previous_cardiac_surgery, opt => opt.NullSubstitute("0"))
@@ -21,13 +22,22 @@ namespace api.Helpers
             .ForMember(dest => dest.LVEF, opt => opt.NullSubstitute("0"))
             .ForMember(dest => dest.recent_mi, opt => opt.NullSubstitute("0"))
             .ForMember(dest => dest.NOPM, opt => opt.NullSubstitute("0"))
-            .ForMember(dest => dest.surgery_on_thoracic_aorta, opt => opt.NullSubstitute("0")); */
+            .ForMember(dest => dest.surgery_on_thoracic_aorta, opt => opt.NullSubstitute("0")); 
+
+
+            CreateMap<Class_Procedure, ProcedureDTO>();
+
+            
+            CreateMap<ProcedureDTO, Class_Procedure>()
+            .ForMember(dest => dest.Sequence, opt => opt.Ignore());
 
           /*   CreateMap<Class_Patient, PatientForReturnDTO>();
 
 
             CreateMap<Class_Procedure, ProcedureListDTO>();
             CreateMap<Class_Procedure, ProcedureDTO>();
+
+
             CreateMap<ProcedureDTO, Class_Procedure>()
             .ForMember(dest => dest.Sequence, opt => opt.Ignore());
 

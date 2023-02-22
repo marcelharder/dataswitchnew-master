@@ -9,5 +9,9 @@ namespace api.data.interfaces
     public interface IPatient
     {
         Task<Class_Patient> getSpecificPatient(int id);
+        Task<int> AddAsync(Class_Patient p); 
+        Task<int> UpdateAsync(Class_Patient p); 
+        Task<int> DeleteAsync(Class_Patient p);
+        Task<bool> SaveAll();
     }
 }

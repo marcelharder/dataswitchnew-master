@@ -16,10 +16,32 @@ namespace api.data.implementations
         {
             _db = db;
         }
+
+        public async Task<int> AddAsync(Class_Patient p)
+        {
+            _db.Add(p);
+            if(await SaveAll()){return 1;}else {return 0;}
+        }
+
+        public Task<int> DeleteAsync(Class_Patient p)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Class_Patient> getSpecificPatient(int id)
         {
             var result = await _db.Patients.FirstOrDefaultAsync(x => x.PatientId == id);
             return result;
+        }
+
+        public async Task<bool> SaveAll()
+        {
+           return await _db.SaveChangesAsync() > 0;
+        }
+
+        public Task<int> UpdateAsync(Class_Patient p)
+        {
+            throw new NotImplementedException();
         }
     }
 }

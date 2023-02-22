@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using api.code;
 using api.data.implementations;
 using api.data.interfaces;
-using dataswitch.data.interfaces;
 using dataswitch.Model;
 using dataswitch.Model.maria_models;
 using Microsoft.AspNetCore.Builder;
@@ -39,8 +38,8 @@ namespace dataswitch
             services.AddDbContext<ecsur_kfafhContext>(x => x.UseSqlServer(Configuration.GetConnectionString("kfafhDatabase")));
             services.AddAutoMapper(System.Reflection.Assembly.GetExecutingAssembly());
             services.AddControllers();
-            services.AddScoped<IMariaDBStuff, MariaDB>();
             services.AddScoped<IPatient, Patient>();
+            services.AddScoped<IProcedure, Procedure>();
             services.AddTransient<specialMaps>(); 
             services.AddSwaggerGen(c =>
             {

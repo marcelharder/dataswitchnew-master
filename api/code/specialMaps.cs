@@ -1,4 +1,6 @@
+using api.Model.maria_models;
 using AutoMapper;
+using dataswitch.DTOs;
 
 namespace api.code
 {
@@ -12,9 +14,13 @@ public class specialMaps
     public void getPatientData(){
      
     }
-    public void getProcedureData(){
 
-    }
+    public ProcedureDTO mapToProcedureDTO(Class_Procedure p)
+        {
+            return _map.Map<Class_Procedure, ProcedureDTO>(p);
+        }
+
+   
 
     public void getAorticSurgeryData(){
 
