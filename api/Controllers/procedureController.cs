@@ -117,7 +117,6 @@ namespace dataswitch.Controllers
                     counter = counter + 1;
                     newPatient.log_score = help_list[counter].add_score;
                 }
-
                 // now get the details from the old database
 
 
